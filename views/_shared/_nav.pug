@@ -1,0 +1,133 @@
+doctype    transitional
+html(xmlns='http://www.w3.org/1999/xhtml',    xml:lang='en',    lang='en')
+    head
+        meta(charset='utf-8')
+        meta(name='viewport',    content='width=device-width,    initial-scale=1.0')
+        title    Home
+        meta(name='description',    content='')
+        meta(name='keywords',    content='')
+        link(rel='stylesheet',    href='../../static/css/main.css')
+        //if    IE
+            script(type='text/javascript',    src='js/ie-fix.js')
+        link(href='../../static/css/bootstrap.css',    rel='stylesheet')
+        //    HTML5    shim    and    Respond.js    IE8    support    of    HTML5    elements    and    media    queries
+        //if    lt    IE    9
+            script(src='js/html5shiv.js')
+            script(src='js/respond.min.js')
+        link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,700',    rel='stylesheet',    type='text/css')
+    body
+        .navbar.navbar-default.navbar-fixed-top
+            .container
+                .navbar-header
+                    button.navbar-toggle(type='button',    data-toggle='collapse',    data-target='.navbar-collapse')
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand    Classified    Ads
+                .top-links.collapse.navbar-collapse
+                    ul.nav.navbar-nav
+                        li
+                            a(href='index.php?page=en_Home')    Home
+                        li
+                            a(href='index.php?page=en_Latest+Ads')    Latest    Ads
+                        li
+                            a(href='index.php?page=en_Email+Alerts')    Email    Alerts
+                        li
+                            a(href='index.php?page=en_News')    News
+                        li
+                            a(href='index.php?page=en_Contact')    Contact
+                        li
+                            a(href='index.php?mod=registration&lng=en')    Register
+                        li
+                            a(href='javascript:ShowLogin()')    Sign    in
+        .clear
+        br
+        br
+        br
+        br
+        br
+        br
+
+        block body
+
+        .clearfix
+        #footer
+            .container
+                ul.bottom-menu
+                    li
+                        a(href='index.php?page=en_Home') Home
+                    li
+                        a(href='index.php?page=en_Latest+Ads') Latest Ads
+                    li
+                        a(href='index.php?page=en_Email+Alerts') Email Alerts
+                    li
+                        a(href='index.php?page=en_Post+a+New+Ad') Post a New Ad
+                    li
+                        a(href='index.php?page=en_Modify+Your+Listing') Modify Your Listing
+                    li
+                        a(href='index.php?page=en_Browse+by+Location') Browse by Location
+                    li
+                        a(href='index.php?page=en_News') News
+                    li
+                        a(href='index.php?page=en_Contact') Contact
+                hr
+        script(type='text/javascript', src='http://apis.google.com/js/plusone.js')
+        script(src='../../static/js/login.js')
+        #main-login-form
+            a(href='javascript:HideLogin()')
+                img.close-login-icon(src='../../static/images/closeicon.png')
+            h3.lfloat Login
+            hr.clear
+            script.
+                function ValidateLoginForm(x)
+                {
+                if(x.Email.value==""){
+                alert("Please enter your username!");
+                x.Email.focus();
+                return false;
+                }
+                else
+                if(x.Password.value==""){
+                alert("Please enter your password!!");
+                x.Password.focus();
+                return false;
+                }
+                return true;
+                }
+            form.no-margin(action='USERS/loginaction.php', method='post', onsubmit='return ValidateLoginForm(this)')
+                table(border='0', cellspacing='1')
+                    input(type='hidden', name='return_url', value="'.$return_url.'")
+                    tr
+                        td Username:
+                        td
+                            input.form-field(type='text', size='40', name='Email')
+                    tr
+                        td Password:
+                        td
+                            input.form-field(size='40', type='password', name='Password')
+                    tr
+                        td(colspan='2', align='right')
+                            br
+                            a.lfloat.margin-20(href='index.php?mod=forgotten_password') forgotten password?
+                            input.ibutton.rfloat.margin-20(type='submit', value='Login')
+            br
+            //
+                <h3>or Sign in</h3>
+                <hr/>
+                Sign in by using your Facebook
+                or LinkedIn account.
+                <br/><br/>
+                <img alt="" src="images/facebook_connect.png"/>
+                <img alt="" src="images/linkedin_connect.png"/>
+            br
+        script(src='../../static/js/jquery.js')
+        script(src='../../static/js/bootstrap.js')
+        script(type='../../static/text/javascript').
+            if(document.getElementById("myCarousel"))
+            {
+            $(document).ready(function() {
+            $('.carousel').carousel({
+            interval: 6000
+            })
+            });
+            }
