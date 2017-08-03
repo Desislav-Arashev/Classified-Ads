@@ -50,6 +50,7 @@ class LatestsAdsController {
         const bodyAd = req.body;
         bodyAd.avatar = req.file ? req.file.filename : 'no-image.png';
         bodyAd.date = new Date();
+        bodyAd.user = req.user;
         this.data.ads.create(bodyAd)
             .then((dbUser) => {
                 return res.redirect('/');

@@ -161,25 +161,6 @@ block body
                     li
                         input.form-control.input-sm(type='file', name='avatar', accept='.jpg,.jpeg,.png')
                         span.sub-text
-            fieldset
-                legend Contact Information
-                ol
-                    li
-                        label(for='user_type') I am
-                        select#user_type(name='user_type')
-                            option(value='1') Individual
-                            option(value='2') Business
-                    li
-                        label(for='name') Your Name(*)
-                        input#name(name='name', placeholder='', type='text', required='')
-                    li
-                        label(for='email') Your Email(*)
-                        input#email(name='email', placeholder='example@domain.com', type='email', required='')
-                        br
-                        span.sub-text Your email address won't be published on the website.
-                    li
-                        label(for='phone') Your Phone
-                        input#phone(name='phone', placeholder='', type='text')
             | 	(*) required fields	
             fieldset
                 button(type='submit') Submit
