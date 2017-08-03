@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "utils/"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/arushev/Classified-Ads.git"
@@ -31,20 +34,33 @@
     "passport-local": "^1.0.0",
     "pug": "^2.0.0-rc.2",
     "supertest": "^3.0.0",
-    "typeahead": "^0.2.2"
+    "typeahead": "^0.2.2",
+    "debug": "~2.6.6",
+    "object-assign": "~4.1.1",
+    "socket.io-client": "~2.0.2"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
+    "babel-preset-es2015": "^6.24.1",
     "chai": "^4.0.2",
+    "del": "^2.2.2",
+    "engine.io": "^3.1.0",
     "eslint": "^4.2.0",
     "eslint-config-google": "^0.9.1",
+    "expect.js": "0.3.1",
     "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
     "gulp-istanbul": "^1.1.2",
     "gulp-mocha": "3",
+    "gulp-task-listing": "1.0.1",
     "istanbul": "^0.4.5",
     "mocha": "^3.4.2",
     "multer": "^1.3.0",
     "selenium-webdriver": "^3.4.0",
-    "sinon": "^2.3.6"
+    "sinon": "^2.3.6",
+    "socket.io-adapter": "^1.1.1",
+    "socket.io-parser": "^3.1.2",
+    "superagent": "1.6.1",
+    "supertest": "1.1.0"
   }
 }

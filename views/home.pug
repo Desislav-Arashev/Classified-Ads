@@ -18,6 +18,7 @@ block body
                 .item.active.slide-back
                     .container
                         .carousel-caption
+                            a.carousel-link(href='ad/' + active.id)
                                 img.img-shadow(src='static/pictures/classified/' + active.avatar , height='200', alt='slider', align='right')
                                 h1 #{active.title}
                                 p
@@ -27,6 +28,7 @@ block body
                     .item.slide-back
                         .container
                             .carousel-caption
+                                a.carousel-link(href='ad/' + ad.id)
                                     img.img-shadow(src='static/pictures/classified/' + ad.avatar, height='200', alt='slider', align='right')
                                     h1 #{ad.title}
                                     p
