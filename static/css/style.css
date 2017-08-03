@@ -34,7 +34,7 @@ ul {
 /* Pages */
 
 .pages {
-  height: 100%;
+  height: 80%;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -90,6 +90,7 @@ ul {
 
 .chat.page {
   display: none;
+  height:80%;
 }
 
 /* Font */

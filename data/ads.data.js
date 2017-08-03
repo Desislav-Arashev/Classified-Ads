@@ -3,7 +3,7 @@ const BaseData = require('./base/base.data');
 
 const Todo = require('../models/ads.model');
 
-class TodosData extends BaseData {
+class AdsData extends BaseData {
     constructor(db) {
         super(db, Todo, Todo);
     }
@@ -13,4 +13,5 @@ class TodosData extends BaseData {
     }
 }
 
-module.exports = TodosData;
+module.exports = AdsData;
+
