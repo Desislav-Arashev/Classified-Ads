@@ -14,6 +14,24 @@ class BaseMongoDbData {
             .toArray();
     }
 
+    last(limit) {
+        try {
+            return this.collection
+                .find({})
+                .sort({ date: -1 })
+                .limit(limit)
+                .toArray()
+                .then((models) => {
+                    return models.map((model) => {
+                        model.id = model._id;
+                        return model;
+                    });
+                });
+        } catch (err) {
+            return Promise.reject('Error Last');
+        }
+    }
+
     getAll() {
         return this.collection.find()
             .toArray()

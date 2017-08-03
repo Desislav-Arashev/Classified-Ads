@@ -85,6 +85,10 @@ block body
                     //
                         <input type="checkbox" name="newsletter"  value="1">
                         I would like to subscribe to the	www.phpclassifiedads.com	newsletter
+                    li
+                        label(for='code')
+                            img(src='../../static/include/sec_image.gif', width='100', height='30')
+                        input#code(name='code', placeholder='Please enter the code', type='text', required='')
             | (*) required fields
             fieldset
                 button(type='submit') Submit

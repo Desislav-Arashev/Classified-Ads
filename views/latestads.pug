@@ -3,88 +3,16 @@ extends _shared/_nav
 block body
     .container.text-left
         h3 Latest ads posted on our website
-        br
-        .featured_listing
-            .result-image
-                img(src='thumbnails/4289164.jpg', width='100', alt='')
-            .result-text
-                a(href='index.php?mod=details&id=55&lang=en')
-                    span.featured_listing_title Five bedrooms apartment to rent in Vienna
-                .listing_description
-                    | An exclusive apartment to rent in Vienna. It's in 1st district, near the St. Stefan cathedral.
+        each ad in ads
+            br
+            .featured_listing
+                .result-image
+                    img(src='static/pictures/classified/' + ad.avatar , width='100', alt='')
+                .result-text
+                    a(href='#')
+                        span.featured_listing_title #{ad.title}
+                    .listing_description
+                        | #{ad.description}
+                    .clear
+                    span.listing_posted_date Posted on #{ad.date}
                 .clear
-                span.listing_posted_date Posted on 04/26/13
-            .clear
-        br
-        .featured_listing
-            .result-image
-                img(src='thumbnails/48542541.jpg', width='100', alt='')
-            .result-text
-                a(href='index.php?mod=details&id=54&lang=en')
-                    span.featured_listing_title VIP apartment on the Italian Riviera
-                .listing_description
-                    | This an exclusive VIP apartment located in Ancona, Italy.Ancona is a city and a seaport in the Marche region, in central Italy, with a population of 102,997 (2010). Ancona is ...
-                .clear
-                span.listing_posted_date Posted on 04/26/13
-            .clear
-        br
-        .listing
-            .result-image
-                img(src='thumbnails/94271496.jpg', width='100', alt='')
-            .result-text
-                a(href='index.php?mod=details&id=53&lang=en')
-                    span.listing_title Amazing apartment for sale in Valencia
-                .listing_description
-                    | This is an exclusive offer .. call us now in order to not miss this opportunity!Valencia is situated on the banks of the Turia river, on the eastern coast of ...
-                .clear
-                span.listing_posted_date Posted on 04/26/13
-            .clear
-        br
-        .featured_listing
-            .result-image
-                img(src='thumbnails/60464160.jpg', width='100', alt='')
-            .result-text
-                a(href='index.php?mod=details&id=52&lang=en')
-                    span.featured_listing_title Exclusive apartment close to the Duomo in Milan
-                .listing_description
-                    | An exclusive offer - excellent apartment in the very center of Milan, close to the Duomo! The price is negotiable, contact us for details.
-                .clear
-                span.listing_posted_date Posted on 04/26/13
-            .clear
-        br
-        .listing
-            .result-image
-                img(src='thumbnails/43871590.jpg', width='100', alt='')
-            .result-text
-                a(href='index.php?mod=details&id=48&lang=en')
-                    span.listing_title Yorkshire terrier for sale
-                .listing_description
-                    | This yorkie is just 1 month old and is super nice ..
-                .clear
-                span.listing_posted_date Posted on 04/26/13
-            .clear
-        br
-        .listing
-            .result-image
-                img(src='thumbnails/19275248.jpg', width='100', alt='')
-            .result-text
-                a(href='index.php?mod=details&id=47&lang=en')
-                    span.listing_title Almost new Galaxy S3
-                .listing_description
-                    | This phone is almost new, it was used for only 2 weeks. Please call me for details.
-                .clear
-                span.listing_posted_date Posted on 04/26/13
-            .clear
-        br
-        .listing
-            .result-image
-                img(src='thumbnails/28670688.jpg', width='100', alt='')
-            .result-text
-                a(href='index.php?mod=details&id=46&lang=en')
-                    span.listing_title Perfect iPhone5
-                .listing_description
-                    | This phone is great and almost new ... fadsfasodf asidfj asiodfj sdifj asiodfj sdiof jasdiofj asdfsdf
-                .clear
-                span.listing_posted_date Posted on 04/24/13
-            .clear
-        br

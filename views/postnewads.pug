@@ -11,6 +11,9 @@ block body
             {
             document.getElementById("location").value=selected_location;
             document.getElementById("link_category").value=category_selected_location;
+<<<<<<< HEAD
+        form#main(onsubmit='return gSubmitForm(this)', action='postnewads', method='post', enctype='multipart/form-data')
+=======
             if(images.files.length>allowed_images)
             {
             alert("You selected more than  "+allowed_images+" images (which is the maximum allowed for this pricing plan)");
@@ -18,9 +21,10 @@ block body
             }
             return true;
             }
-        form#main(onsubmit='return gSubmitForm(this)', action='/postnewads', method='post', enctype='multipart/form-data')
+        form#main(onsubmit='return gSubmitForm(this)', action='index.php', method='post', enctype='multipart/form-data')
             input(type='hidden', name='page', value='en_Post a New Ad')
             input(type='hidden', name='ProceedSend', value='1')
+>>>>>>> parent of 4dad5df... post new ad
             fieldset
                 legend Please enter the ad details
                 ol
@@ -29,15 +33,15 @@ block body
                             | Category(*)
                         .div_field
                             select#link_category_menu(name='link_category_menu', required='')
-                                option(value='1') Buy or Sell
-                                option(value='2') Courses & Classes
-                                option(value='3') Cars
-                                option(value='4') Properties
-                                option(value='5') Services
-                                option(value='6') Jobs
-                                option(value='7') Community
-                                option(value='8') Events
-                                option(value='9') Business Opportunities
+                                option(value='Buy or Sell') Buy or Sell
+                                option(value='Courses and Classes') Courses and Classes
+                                option(value='Cars') Cars
+                                option(value='Properties') Properties
+                                option(value='Services') Services
+                                option(value='Jobs') Jobs
+                                option(value='Community') Community
+                                option(value='Events') Events
+                                option(value='Business Opportunities') Business Opportunities
                             script.
                                 var category_suggest_location_url="include/suggest_category.php?lang=en";
                             script(type='text/javascript', src='include/multi_category_select.js')
@@ -70,57 +74,57 @@ block body
                             a(href='javascript:AddMap()') Add Map
                         .div_field
                             select#location_menu(name='location_menu')
-                                option(value='1') Alabama
-                                option(value='2') Alaska
-                                option(value='3') Arizona
-                                option(value='4') Arkansas
-                                option(value='5') California
-                                option(value='6') Colorado
-                                option(value='7') Connecticut
-                                option(value='8') Delaware
-                                option(value='9') District of Columbia
-                                option(value='10') Florida
-                                option(value='11') Georgia
-                                option(value='12') Hawaii
-                                option(value='13') Idaho
-                                option(value='14') Illinois
-                                option(value='15') Indiana
-                                option(value='16') Iowa
-                                option(value='17') Kansas
-                                option(value='18') Kentucky
-                                option(value='19') Louisiana
-                                option(value='20') Maine
-                                option(value='21') Maryland
-                                option(value='22') Massachusetts
-                                option(value='23') Michigan
-                                option(value='24') Minnesota
-                                option(value='25') Mississippi
-                                option(value='26') Missouri
-                                option(value='27') Montana
-                                option(value='28') Nebraska
-                                option(value='29') Nevada
-                                option(value='30') New Hampshire
-                                option(value='31') New Jersey
-                                option(value='32') New Mexico
-                                option(value='33') New York
-                                option(value='34') North Carolina
-                                option(value='35') North Dakota
-                                option(value='36') Ohio
-                                option(value='37') Oklahoma
-                                option(value='38') Oregon
-                                option(value='39') Pennsylvania
-                                option(value='40') Rhode Island
-                                option(value='41') South Carolina
-                                option(value='42') South Dakota
-                                option(value='43') Tennessee
-                                option(value='44') Texas
-                                option(value='45') Utah
-                                option(value='46') Vermont
-                                option(value='47') Virginia
-                                option(value='48') Washington
-                                option(value='49') West Virginia
-                                option(value='50') Wisconsin
-                                option(value='51') Wyoming
+                                option(value='Alabama')  Alabama
+                                option(value='Alaska')  Alaska
+                                option(value='Arizona')  Arizona
+                                option(value='Arkansas')  Arkansas
+                                option(value='California')  California
+                                option(value='Colorado')  Colorado
+                                option(value='Connecticut')  Connecticut
+                                option(value='Delaware')  Delaware
+                                option(value='District of Columbia')  District of Columbia
+                                option(value='Florida') Florida
+                                option(value='Georgia') Georgia
+                                option(value='Hawaii') Hawaii
+                                option(value='Idaho') Idaho
+                                option(value='Illinois') Illinois
+                                option(value='Indiana') Indiana
+                                option(value='Iowa') Iowa
+                                option(value='Kansas') Kansas
+                                option(value='Kentucky') Kentucky
+                                option(value='Louisiana') Louisiana
+                                option(value='Maine') Maine
+                                option(value='Maryland') Maryland
+                                option(value='Massachusetts') Massachusetts
+                                option(value='Michigan') Michigan
+                                option(value='Minnesota') Minnesota
+                                option(value='Mississippi') Mississippi
+                                option(value='Missouri') Missouri
+                                option(value='Montana') Montana
+                                option(value='Nebraska') Nebraska
+                                option(value='Nevada') Nevada
+                                option(value='New Hampshire') New Hampshire
+                                option(value='New Jersey') New Jersey
+                                option(value='New Mexico') New Mexico
+                                option(value='New York') New York
+                                option(value='North Carolina') North Carolina
+                                option(value='North Dakota') North Dakota
+                                option(value='Ohio') Ohio
+                                option(value='Oklahoma') Oklahoma
+                                option(value='Oregon') Oregon
+                                option(value='Pennsylvania') Pennsylvania
+                                option(value='Rhode Island') Rhode Island
+                                option(value='South Carolina') South Carolina
+                                option(value='South Dakota') South Dakota
+                                option(value='Tennessee') Tennessee
+                                option(value='Texas') Texas
+                                option(value='Utah') Utah
+                                option(value='Vermont') Vermont
+                                option(value='Virginia') Virginia
+                                option(value='Washington') Washington
+                                option(value='West Virginia') West Virginia
+                                option(value='Wisconsin') Wisconsin
+                                option(value='Wyoming') Wyoming
                             script.
                                 var suggest_location_url="include/suggest_location.php";
                             script(type='text/javascript', src='include/multi_location_select.js')
@@ -245,22 +249,8 @@ block body
                 legend Images
                 ol
                     li
-                        input#images(type='file', onchange='javascript:ImagesSelected()', name='images[]', multiple='multiple')
+                        input.form-control.input-sm(type='file', name='avatar', accept='.jpg,.jpeg,.png')
                         span.sub-text
-                            script.
-                                var allowed_images=5; if(allowed_images==0) document.getElementById("images_fieldset").style.display="none";
-                            | 				You can select up to				
-                            span#images_number 5
-                            | 				Images
-                        script.
-                            function ImagesSelected()
-                            {
-                            if(document.getElementById("images").files.length>2 )
-                            {
-                            alert("You selected more than  "+allowed_images+" images (which is the maximum allowed for this pricing plan)");
-                            return false;
-                            }
-                            }
             fieldset
                 legend Contact Information
                 ol
@@ -280,6 +270,10 @@ block body
                     li
                         label(for='phone') Your Phone
                         input#phone(name='phone', placeholder='', type='text')
+                    li
+                        label(for='code')
+                            img(src='include/sec_image.php', width='100', height='30')
+                        input#code(name='code', placeholder='Please enter the code', type='text', required='')
             | 	(*) required fields	
             fieldset
                 button(type='submit') Submit
@@ -290,3 +284,4 @@ block body
                 document.getElementById('category').setCustomValidity('Please select a category!');
                 document.getElementById('name').setCustomValidity('Please enter your name!');
                 document.getElementById('email').setCustomValidity('Please enter your email address!');
+                document.getElementById('code').setCustomValidity('Please enter the code');

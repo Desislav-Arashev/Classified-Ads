@@ -82,7 +82,6 @@ html(xmlns='http://www.w3.org/1999/xhtml',    xml:lang='en',    lang='en')
                 }
             form.no-margin(action='/auth/sign-in', method='post', onsubmit='return ValidateLoginForm(this)')
                 table(border='0', cellspacing='1')
-                    input(type='hidden', name='return_url', value="'.$return_url.'")
                     tr
                         td Username:
                         td

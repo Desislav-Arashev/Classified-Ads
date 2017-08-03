@@ -1,5 +1,6 @@
 class Ads {
     static isValid(model) {
+        return true;
     }
 
     get id() {

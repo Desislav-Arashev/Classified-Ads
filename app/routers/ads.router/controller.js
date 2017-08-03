@@ -1,16 +1,25 @@
 class LatestsAdsController {
-    constructor(data) {
-        this.data = data;
+    constructor() {
     }
 
     getAll(req, res) {
-        return res.render('latestads');
+        this.data.ads.last(10)
+            .then((ads) => {
+                ads.forEach(function(ad) {
+                    ad.date = ad.date.toLocaleDateString('en-US');
+                }, this);
+                return res.render('latestads', {
+                    ads: ads,
+                });
+            });
     }
+<<<<<<< HEAD
 
     create(req, res) {
-        const bodyUser = req.body;
-        console.log(req.body);
-        return this.data.ads.create(bodyUser)
+        const bodyAd = req.body;
+        bodyAd.avatar = req.file ? req.file.filename : 'no-image.png';
+        bodyAd.date = new Date();
+        this.data.ads.create(bodyAd)
             .then((dbUser) => {
                 return res.redirect('/');
             })
@@ -19,6 +28,8 @@ class LatestsAdsController {
                 Promise.reject();
             });
     }
+=======
+>>>>>>> parent of 4dad5df... post new ad
 }
 
 const init = (data) => {

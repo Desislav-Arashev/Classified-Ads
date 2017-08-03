@@ -13,7 +13,7 @@ class AuthController {
 
     signUp(req, res) {
         const bodyUser = req.body;
-
+        console.log(bodyUser)
         this.data.users.findByUsername(bodyUser.username)
             .then((dbUser) => {
                 if (dbUser) {
