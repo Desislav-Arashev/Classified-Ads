@@ -1,0 +1,297 @@
+extends _shared/_nav
+
+block body
+
+    .container.text-left
+        h2
+            | Post a new ad on the website
+        br
+        script.
+            function gSubmitForm(x)
+            {
+            document.getElementById("location").value=selected_location;
+            document.getElementById("link_category").value=category_selected_location;
+            if(images.files.length>allowed_images)
+            {
+            alert("You selected more than  "+allowed_images+" images (which is the maximum allowed for this pricing plan)");
+            return false;
+            }
+            return true;
+            }
+        form#main(onsubmit='return gSubmitForm(this)', action='index.php', method='post', enctype='multipart/form-data')
+            input(type='hidden', name='page', value='en_Post a New Ad')
+            input(type='hidden', name='ProceedSend', value='1')
+            fieldset
+                legend Please enter the ad details
+                ol
+                    li
+                        .div_label
+                            | Category(*)
+                        .div_field
+                            select#link_category_menu(name='link_category_menu', required='')
+                                option(value='1') Buy or Sell
+                                option(value='2') Courses & Classes
+                                option(value='3') Cars
+                                option(value='4') Properties
+                                option(value='5') Services
+                                option(value='6') Jobs
+                                option(value='7') Community
+                                option(value='8') Events
+                                option(value='9') Business Opportunities
+                            script.
+                                var category_suggest_location_url="include/suggest_category.php?lang=en";
+                            script(type='text/javascript', src='include/multi_category_select.js')
+                            input#link_category(type='hidden', name='link_category', value='')
+                            script(type='text/javascript').
+                                var m_all="Please Select";
+                                category_transform_select("link_category_menu","240px","220px");
+                        .clear
+                        script.
+                            var main_cat_ids=new Array(1,2,3,4,5,6,7,8,9);
+                        .clear
+                    li
+                        label(for='title') Headline(*)
+                        input#title(name='title', type='text', placeholder='Please enter the ad title', required='', autofocus='')
+                    li
+                        label(for='description')
+                            | Description(*)
+                            br
+                        textarea#description(name='description', rows='10')  
+                        br
+                        span.sub-text(style='position:relative;left:120px') 800 characters maximum
+                    li
+                        label(for='price') Price
+                        input#price(name='price', type='text')
+                ol#additional-fields
+                    li
+                        .div_label
+                            | Location					
+                            br
+                            a(href='javascript:AddMap()') Add Map
+                        .div_field
+                            select#location_menu(name='location_menu')
+                                option(value='1') Alabama
+                                option(value='2') Alaska
+                                option(value='3') Arizona
+                                option(value='4') Arkansas
+                                option(value='5') California
+                                option(value='6') Colorado
+                                option(value='7') Connecticut
+                                option(value='8') Delaware
+                                option(value='9') District of Columbia
+                                option(value='10') Florida
+                                option(value='11') Georgia
+                                option(value='12') Hawaii
+                                option(value='13') Idaho
+                                option(value='14') Illinois
+                                option(value='15') Indiana
+                                option(value='16') Iowa
+                                option(value='17') Kansas
+                                option(value='18') Kentucky
+                                option(value='19') Louisiana
+                                option(value='20') Maine
+                                option(value='21') Maryland
+                                option(value='22') Massachusetts
+                                option(value='23') Michigan
+                                option(value='24') Minnesota
+                                option(value='25') Mississippi
+                                option(value='26') Missouri
+                                option(value='27') Montana
+                                option(value='28') Nebraska
+                                option(value='29') Nevada
+                                option(value='30') New Hampshire
+                                option(value='31') New Jersey
+                                option(value='32') New Mexico
+                                option(value='33') New York
+                                option(value='34') North Carolina
+                                option(value='35') North Dakota
+                                option(value='36') Ohio
+                                option(value='37') Oklahoma
+                                option(value='38') Oregon
+                                option(value='39') Pennsylvania
+                                option(value='40') Rhode Island
+                                option(value='41') South Carolina
+                                option(value='42') South Dakota
+                                option(value='43') Tennessee
+                                option(value='44') Texas
+                                option(value='45') Utah
+                                option(value='46') Vermont
+                                option(value='47') Virginia
+                                option(value='48') Washington
+                                option(value='49') West Virginia
+                                option(value='50') Wisconsin
+                                option(value='51') Wyoming
+                            script.
+                                var suggest_location_url="include/suggest_location.php";
+                            script(type='text/javascript', src='include/multi_location_select.js')
+                            input#location(type='hidden', name='location', value='')
+                            script(type='text/javascript').
+                                transform_select("location_menu","200px","200px");
+                        .clear
+                    li#add-map(style='display:none')
+                        .div_label
+                            | Address
+                        script(src='https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false')
+                        script.
+                            var geocoder;
+                            var map;
+                            function initialize()
+                            {
+                            geocoder = new google.maps.Geocoder();
+                            var latlng = new google.maps.LatLng(0, 0);
+                            var mapOptions = {
+                            zoom: 1,
+                            center: latlng,
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                            }
+                            map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+                            }
+                            function PreviewMap()
+                            {
+                            document.getElementById("map-canvas").style.display="block";
+                            var address = "";
+                            if(document.getElementById("selected_dropdown").innerText)
+                            {
+                            address +=
+                            document.getElementById("selected_dropdown").innerText.replace(" :",", ")
+                            +", ";
+                            }
+                            address += document.getElementById('address').value;
+                            geocoder.geocode( { 'address': address}, function(results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
+                            map.setCenter(results[0].geometry.location);
+                            map.setZoom(13);
+                            var marker = new google.maps.Marker({
+                            map: map,
+                            position: results[0].geometry.location
+                            });
+                            document.getElementById("latitude").value=
+                            results[0].geometry.location.lat();
+                            document.getElementById("longitude").value=
+                            results[0].geometry.location.lng();
+                            } else {
+                            alert('Google Maps can\\'t find this address: ' + status);
+                            }
+                            });
+                            google.maps.event.trigger(map, 'resize');
+                            map.checkResize();
+                            }
+                            window.onload=initialize;
+                        script.
+                            function AddMap()
+                            {
+                            if(document.getElementById("add-map").style.display=="none")
+                            {
+                            document.getElementById("add-map").style.display="block"
+                            }
+                            else
+                            {
+                            document.getElementById("add-map").style.display="none"
+                            }
+                            }
+                            function UserKeyUp()
+                            {
+                            if(document.getElementById("address").value=="")
+                            {
+                            document.getElementById("preview-map").style.display="none";
+                            }
+                            else
+                            {
+                            document.getElementById("preview-map").style.display="block";
+                            }
+                            }
+                        .div_field
+                            input#address(name='address', value='', onkeyup='javascript:UserKeyUp()', type='text', placeholder='Please enter the address')
+                        br
+                        | 				or enter 
+                        | 				Latitude:
+                        input#latitude(type='text', name='latitude', style='width:60px', value='')
+                        span(style='font-size:10px') e.g. 40.758224
+                        | 				Longitude:
+                        input#longitude(type='text', name='longitude', style='width:60px', value='')
+                        span(style='font-size:10px') e.g. -73.917404
+                        br
+                        span#preview-map(style='display:none')
+                            a(href='javascript:PreviewMap()') Preview and Save the Map
+                        .clear
+                        #map-canvas(style='width: 500px; height: 300px;display:none')
+            fieldset
+                legend Choose a pricing plan
+                ol#ad-packages
+                    #packages-0
+                        li(style='line-height:1.0em')
+                            br
+                            input.form-radio(name='package', value='2', checked='', onclick='javascript:ChangeImages(2)', type='radio')
+                            b Free
+                            br
+                            br
+                            | 				Price: 
+                            b
+                                | FREE!
+                            | 									,    
+                            | 					Ad expire time (days): 
+                            b 90
+                            | 					,    
+                            | 					Allowed images: 
+                            b
+                                b 5
+                                br
+                                br
+                            span.sub-text
+                                | Sample package description comes here
+                            br
+                            br
+            fieldset#images_fieldset
+                legend Images
+                ol
+                    li
+                        input#images(type='file', onchange='javascript:ImagesSelected()', name='images[]', multiple='multiple')
+                        span.sub-text
+                            script.
+                                var allowed_images=5; if(allowed_images==0) document.getElementById("images_fieldset").style.display="none";
+                            | 				You can select up to				
+                            span#images_number 5
+                            | 				Images
+                        script.
+                            function ImagesSelected()
+                            {
+                            if(document.getElementById("images").files.length>2 )
+                            {
+                            alert("You selected more than  "+allowed_images+" images (which is the maximum allowed for this pricing plan)");
+                            return false;
+                            }
+                            }
+            fieldset
+                legend Contact Information
+                ol
+                    li
+                        label(for='user_type') I am
+                        select#user_type(name='user_type')
+                            option(value='1') Individual
+                            option(value='2') Business
+                    li
+                        label(for='name') Your Name(*)
+                        input#name(name='name', placeholder='', type='text', required='')
+                    li
+                        label(for='email') Your Email(*)
+                        input#email(name='email', placeholder='example@domain.com', type='email', required='')
+                        br
+                        span.sub-text Your email address won't be published on the website.
+                    li
+                        label(for='phone') Your Phone
+                        input#phone(name='phone', placeholder='', type='text')
+                    li
+                        label(for='code')
+                            img(src='include/sec_image.php', width='100', height='30')
+                        input#code(name='code', placeholder='Please enter the code', type='text', required='')
+            | 	(*) required fields	
+            fieldset
+                button(type='submit') Submit
+        //if !IE
+            script.
+                document.getElementById('title').setCustomValidity('Please enter the ad title');
+                document.getElementById('url').setCustomValidity('Please enter the URL!');
+                document.getElementById('category').setCustomValidity('Please select a category!');
+                document.getElementById('name').setCustomValidity('Please enter your name!');
+                document.getElementById('email').setCustomValidity('Please enter your email address!');
+                document.getElementById('code').setCustomValidity('Please enter the code');

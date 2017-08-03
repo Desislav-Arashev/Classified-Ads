@@ -1,0 +1,32 @@
+extends _shared/_nav
+
+block body
+    .container.text-left
+        h3 Please contact us by using the form below
+        form(action='index.php', method='post')
+            input(name='form_id', type='hidden', value='11')
+            input(type='hidden', name='page', value='en_Contact')
+            input(type='hidden', name='ProceedCustomForm', value='1')
+            br
+            br
+            table(prev='')
+                tbody
+                    tr
+                        td(prevstyle=' ') Name: 
+                        td(prevstyle=' ')
+                            input(style='width:200px', name='field_6880', type='text')
+                    tr
+                        td(prevstyle=' ') Email: 
+                        td(prevstyle=' ')
+                            input(style='width:200px', name='field_1645', type='text')
+                    tr
+                        td(prevstyle=' ') Message: 
+                        td(prevstyle=' ')
+                            textarea(name='field_8323', style='width: 318px; height: 154px;', rows='5')  
+            input(type='hidden', name='namefield_6880', value='Name')
+            input(type='hidden', name='namefield_1645', value='Email')
+            input(type='hidden', name='namefield_8323', value='Message')
+            br
+            br
+            br
+            input(type='submit', value='Send')

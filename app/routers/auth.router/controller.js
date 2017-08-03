@@ -1,13 +1,10 @@
-class TodosController {
+class AuthController {
     constructor(data) {
         this.data = data;
     }
 
     getSignUpForm(req, res) {
         return res.render('auth/sign-up');
-    }
-    getSignInForm(req, res) {
-        return res.render('auth/sign-in');
     }
     signOut(req, res) {
         req.logout();
@@ -26,7 +23,8 @@ class TodosController {
                 return this.data.users.create(bodyUser);
             })
             .then((dbUser) => {
-                return res.redirect('/auth/sign-in');
+                req.flash('success_msg', 'Thank you! Your account was created successfully!');
+                return res.redirect('/');
             })
             .catch((err) => {
                 req.flash('error', err);
@@ -35,7 +33,7 @@ class TodosController {
 }
 
 const init = (data) => {
-    return new TodosController(data);
+    return new AuthController(data);
 };
 
 module.exports = { init };

@@ -1,0 +1,42 @@
+mixin nav(user)
+    .navbar.navbar-default.navbar-fixed-top
+        if user
+            .container
+                .navbar-header
+                    button.navbar-toggle(type='button',    data-toggle='collapse',    data-target='.navbar-collapse')
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand    Classified    Ads
+                .top-links.collapse.navbar-collapse
+                    ul.nav.navbar-nav
+                        li
+                            a(href='/')    Home
+                        li
+                            a(href='/latestads')    Latest    Ads
+                        li
+                            a(href='/postnewads')   Post a New Ad
+                        li
+                            a(href='/contact')    Contact
+                        li
+                            a(href='/auth/sign-out') Logout
+        else
+            .container
+                .navbar-header
+                    button.navbar-toggle(type='button',    data-toggle='collapse',    data-target='.navbar-collapse')
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand    Classified    Ads
+                .top-links.collapse.navbar-collapse
+                    ul.nav.navbar-nav
+                        li
+                            a(href='/')    Home
+                        li
+                            a(href='/latestads')    Latest    Ads
+                        li
+                            a(href='/contact')    Contact
+                        li
+                            a(href='/auth/sign-up')    Register
+                        li
+                            a(href='javascript:ShowLogin()')    Sign    in

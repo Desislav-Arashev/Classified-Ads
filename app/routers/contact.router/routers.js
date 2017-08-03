@@ -2,13 +2,12 @@ const { Router } = require('express');
 
 const attachTo = (app, data) => {
     const router = new Router();
-    const controller = require('./controller').init(data);
 
     router
         .get('/', (req, res) => {
-            return res.render('latestads');
+            return res.render('contact');
         });
-    app.use('/latestads', router);
+    app.use('/contact', router);
 };
 
 module.exports = { attachTo };

@@ -3,7 +3,7 @@ class LatestsAdsController {
     }
 
     getAll(req, res) {
-        return res.render('/');
+        return res.render('latestads');
     }
 }
 

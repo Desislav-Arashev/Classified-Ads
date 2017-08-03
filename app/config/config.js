@@ -1,7 +1,6 @@
 /* globals __dirname */
 
 const path = require('path');
-
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express = require('express');

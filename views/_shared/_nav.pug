@@ -1,3 +1,4 @@
+include _menu
 doctype    transitional
 html(xmlns='http://www.w3.org/1999/xhtml',    xml:lang='en',    lang='en')
     head
@@ -16,30 +17,7 @@ html(xmlns='http://www.w3.org/1999/xhtml',    xml:lang='en',    lang='en')
             script(src='js/respond.min.js')
         link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,700',    rel='stylesheet',    type='text/css')
     body
-        .navbar.navbar-default.navbar-fixed-top
-            .container
-                .navbar-header
-                    button.navbar-toggle(type='button',    data-toggle='collapse',    data-target='.navbar-collapse')
-                        span.icon-bar
-                        span.icon-bar
-                        span.icon-bar
-                    a.navbar-brand    Classified    Ads
-                .top-links.collapse.navbar-collapse
-                    ul.nav.navbar-nav
-                        li
-                            a(href='/')    Home
-                        li
-                            a(href='/latestads')    Latest    Ads
-                        li
-                            a(href='index.php?page=en_Email+Alerts')    Email    Alerts
-                        li
-                            a(href='index.php?page=en_News')    News
-                        li
-                            a(href='index.php?page=en_Contact')    Contact
-                        li
-                            a(href='/auth/sign-up')    Register
-                        li
-                            a(href='javascript:ShowLogin()')    Sign    in
+        +nav(user)
         .clear
         br
         br
@@ -47,7 +25,15 @@ html(xmlns='http://www.w3.org/1999/xhtml',    xml:lang='en',    lang='en')
         br
         br
         br
-
+        if success_msg && success_msg.length > 0
+            each msg in success_msg
+                div(class = "alert alert-success")|hello
+        if error_msg && error_msg.length > 0
+            each msg in error_msg
+                div(class = "alert alert-danger")|hello
+        if error && error.length > 0
+            each msg in error
+                div(class = "alert alert-danger")|hello
         block body
 
         .clearfix
@@ -69,7 +55,7 @@ html(xmlns='http://www.w3.org/1999/xhtml',    xml:lang='en',    lang='en')
                     li
                         a(href='index.php?page=en_News') News
                     li
-                        a(href='index.php?page=en_Contact') Contact
+                        a(href='/contact') Contact
                 hr
         script(type='text/javascript', src='http://apis.google.com/js/plusone.js')
         script(src='../../static/js/login.js')
@@ -94,17 +80,17 @@ html(xmlns='http://www.w3.org/1999/xhtml',    xml:lang='en',    lang='en')
                 }
                 return true;
                 }
-            form.no-margin(action='USERS/loginaction.php', method='post', onsubmit='return ValidateLoginForm(this)')
+            form.no-margin(action='/auth/sign-in', method='post', onsubmit='return ValidateLoginForm(this)')
                 table(border='0', cellspacing='1')
                     input(type='hidden', name='return_url', value="'.$return_url.'")
                     tr
                         td Username:
                         td
-                            input.form-field(type='text', size='40', name='Email')
+                            input.form-field(type='text', size='40', name='username')
                     tr
                         td Password:
                         td
-                            input.form-field(size='40', type='password', name='Password')
+                            input.form-field(size='40', type='password', name='password')
                     tr
                         td(colspan='2', align='right')
                             br
