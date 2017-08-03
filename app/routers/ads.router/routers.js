@@ -12,6 +12,9 @@ const attachTo = (app, data) => {
         .get('/postnewads', (req, res) => {
             return res.render('postnewads');
         })
+        .get('/ad/:id', (req, res) => {
+            return controller.getDetails(req, res);
+        })
         .post('/postnewads', upload('./static/pictures/classified'), (req, res) => {
             return controller.create(req, res);
         });

@@ -1,0 +1,172 @@
+
+extends _shared/_nav
+block body
+
+    .container.text-left
+        script.
+            var contact_advertiser = false;
+            function ShowContactForm()
+            {
+            if(!contact_advertiser)
+            {
+            document.getElementById("contact-advertiser").style.display="block";
+            contact_advertiser = true;
+            }
+            else
+            {
+            document.getElementById("contact-advertiser").style.display="none";
+            contact_advertiser = false;
+            }
+            }
+        a.button-link(href='javascript:ShowContactForm()') Contact the Advertiser
+        .clear
+        #contact-advertiser(style='display:none')
+            br
+            h3
+                | Contact Sergio Ramirez					,  
+                img(src='images/phone_icon.png', alt='phone icon')
+                |  +4290435345				about classified ad 'Amazing apartment for sale in Valencia'
+            form#main(action='index.php', method='post', enctype='multipart/form-data')
+                input(type='hidden', name='mod', value='details')
+                input(type='hidden', name='id', value='53')
+                input(type='hidden', name='ContactAdvertiser', value='1')
+                fieldset
+                    legend Please enter your message or questions below
+                    ol
+                        li
+                            label(for='description')
+                                | Message Text(*)
+                                br
+                            textarea#description(name='description', rows='8')  
+                fieldset
+                    legend Contact Information
+                    ol
+                        li
+                            label(for='name') Your Name(*)
+                            input#name(name='name', placeholder='Your first and last name', type='text', required='')
+                        li
+                            label(for='email') Your Email(*)
+                            input#email(name='email', placeholder='example@domain.com', type='email', required='')
+                        li
+                            label(for='phone') Your Phone
+                            input#phone(name='phone', placeholder='', type='text')
+                fieldset
+                    button(type='submit') Send
+            br
+            br
+        h2.lfloat #{ad.title}
+        .clear
+        br
+        .tabbable
+            ul.nav.nav-tabs
+                li.active
+                    a(style='padding-right:20px', href='#tab-details', data-toggle='tab') Details
+                li
+                    a(style='padding-right:20px', href='#tab-share', data-toggle='tab') Share
+            .tab-content
+                br
+                #tab-details.tab-pane.active
+                    .final-result-image
+                        a(href='uploaded_images/94271496.jpg', rel='prettyPhoto[ad_gal]')
+                            img(src='/static/pictures/classified/' + ad.avatar, width='300', alt='img')
+                    .lfloat(style='width:50%;')
+                        | #{ad.description}
+                        br
+                        br
+                        b Posted by:
+                        br
+                        | 					Sergio Ramirez
+                        | 					(Individual)						,
+                        img(src='images/phone_icon.png', alt='phone icon')
+                        b +4290435345
+                        br
+                    .clear
+                    hr.margin-10
+                    | 				Posted on:
+                    b
+                        | 04/26/13
+                    | , 
+                    | 				Total Visits: 
+                    b 517
+                // end tab-details
+                #tab-images.tab-pane
+                    link(rel='stylesheet', href='css/prettyPhoto.css', type='text/css', media='screen', charset='utf-8')
+                    script(src='js/jquery.prettyPhoto.js', type='text/javascript', charset='utf-8')
+                    script(type='text/javascript', charset='utf-8').
+                        $(document).ready(function()
+                        {
+                        $("a[rel='prettyPhoto[ad_gal]']").prettyPhoto({
+                        });
+                        });
+                    a(href='uploaded_images/40766378.jpg', rel='prettyPhoto[ad_gal]')
+                        img.img-shadow.img-details-margin(src='thumbnails/40766378.jpg', width='200', alt='Amazing apartment for sale in Valencia')
+                    img.img-shadow.img-details-margin(src='thumbnails/94271496.jpg', width='200', alt='Amazing apartment for sale in Valencia')
+                // end tab-images
+                #tab-contact.tab-pane
+                    br
+                    br
+                    | 				Location: 
+                    b Nevada
+                    br
+                    // Google Maps
+                    // end Google Maps
+                    br
+                    br
+                // end tab-contact
+                #tab-share.tab-pane
+                    img(src='images/googleplus.gif', alt='Share on Google+')
+                    a.underline-link(rel='nofollow', href='http://plus.google.com/share?url=http://www.phpsitehost.com/demos/classifieds6/index.php?mod=details&id=53', target='_blank')
+                        | Share this classified ad on Google+
+                    br
+                    br
+                    img(src='images/facebook.gif', alt='Share on Facebook')
+                    a.underline-link(rel='nofollow', href='http://www.facebook.com/sharer.php?u=http://www.phpsitehost.com/demos/classifieds6/index.php?mod=details&id=53', target='_blank')
+                        | Share this classified ad on Facebook
+                    br
+                    br
+                    img(src='images/twitter.gif', alt='Share on Twitter')
+                    a.underline-link(rel='nofollow', href='http://www.twitter.com/intent/tweet?text=Amazing apartment for sale in Valencia&url=http://www.phpsitehost.com/demos/classifieds6/index.php?mod=details&id=53', target='_blank')
+                        | Share this classified ad on Twitter
+                    br
+                    br
+                    br
+                    // recommend to a friend
+                    form#main(action='index.php', method='post', enctype='multipart/form-data')
+                        input(type='hidden', name='mod', value='details')
+                        input(type='hidden', name='id', value='53')
+                        input(type='hidden', name='SendOfferFriend', value='1')
+                        fieldset
+                            legend Recommend this classified ad to a friend
+                            ol
+                                li
+                                    label(for='sender_name') Your Name(*)
+                                    input#sender_name(name='sender_name', placeholder='Your first and last name', type='text', required='')
+                                li
+                                    label(for='email_address') Send it to email(*)
+                                    input#email_address(name='email_address', placeholder='your_friend@email.com', type='email', required='')
+                                li
+                                    label(for='friend_description')
+                                        | Message Text(*)
+                                        br
+                                    textarea#friend_description(name='friend_description', rows='8')
+                        fieldset
+                            button(type='submit') Submit
+                    // end recommend to a friend
+                // end tab share
+        .clear
+        br
+        br
+        br
+        br
+        script.
+            $(".grid-result").on("mouseenter mouseleave", "a", function(e)
+            {
+            if (e.type === "mouseenter") {
+            $(this).children(".entry-overlay").fadeIn(10);
+            }
+            else {
+            $(this).children(".entry-overlay").fadeOut(10);
+            }
+            });
+        .clear
+        br

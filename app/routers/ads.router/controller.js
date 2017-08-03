@@ -15,6 +15,37 @@ class LatestsAdsController {
             });
     }
 
+        homeGetAll(req, res) {
+        this.data.ads.last(5)
+            .then((ads) => {
+                const active = ads[0];
+                ads.splice(ads, 1);
+                const inactive = ads;
+                return res.render('home', {
+                    ads: inactive,
+                    active: active,
+                });
+            });
+    }
+
+    getDetails(req, res) {
+        return this.data.ads.findById(req.params.id)
+            .then((ad) => {
+                if (!ad) {
+                    return res.redirect(404, '/latestads');
+                }
+                ad.date = ad.date.toLocaleDateString('en-US');
+
+                return res.render('details', {
+                    ad: ad,
+                    user: req.user,
+                });
+            })
+            .catch((err) => {
+                return res.redirect(404, '/sells');
+            });
+    }
+
     create(req, res) {
         const bodyAd = req.body;
         bodyAd.avatar = req.file ? req.file.filename : 'no-image.png';

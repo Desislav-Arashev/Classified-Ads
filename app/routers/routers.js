@@ -4,8 +4,9 @@ const fs = require('fs');
 const path = require('path');
 
 const attachTo = (app, data) => {
+    const controller = require('./ads.router/controller').init(data);
     app.get('/', (req, res) => {
-        return res.render('home');
+        return controller.homeGetAll(req, res);
     });
 
     fs.readdirSync(__dirname)

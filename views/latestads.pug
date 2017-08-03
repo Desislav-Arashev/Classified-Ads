@@ -9,7 +9,7 @@ block body
                 .result-image
                     img(src='static/pictures/classified/' + ad.avatar , width='100', alt='')
                 .result-text
-                    a(href='#')
+                    a(href='ad/' + ad.id)
                         span.featured_listing_title #{ad.title}
                     .listing_description
                         | #{ad.description}

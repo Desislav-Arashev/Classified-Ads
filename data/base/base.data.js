@@ -14,6 +14,16 @@ class BaseMongoDbData {
             .toArray();
     }
 
+    getAllCount(props) {
+        try {
+            return this.collection
+                .find(props.query)
+                .count();
+        } catch (err) {
+            return Promise.reject('Invalid id');
+        }
+    }
+
     last(limit) {
         try {
             return this.collection
