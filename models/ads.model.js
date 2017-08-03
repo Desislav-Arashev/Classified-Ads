@@ -1,0 +1,21 @@
+class Ads {
+    static isValid(model) {
+    }
+
+    get id() {
+        return this._id;
+    }
+
+    static toViewModel(model) {
+        const viewModel = new Ads();
+
+        Object.keys(model)
+            .forEach((prop) => {
+                viewModel[prop] = model[prop];
+            });
+
+        return viewModel;
+    }
+}
+
+module.exports = Ads;

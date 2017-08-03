@@ -10,6 +10,9 @@ const attachTo = (app, data) => {
         })
         .get('/postnewads', (req, res) => {
             return res.render('postnewads');
+        })
+        .post('/postnewads', (req, res) => {
+            return controller.create(req, res);
         });
     app.use('/', router);
 };

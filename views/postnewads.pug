@@ -18,7 +18,7 @@ block body
             }
             return true;
             }
-        form#main(onsubmit='return gSubmitForm(this)', action='index.php', method='post', enctype='multipart/form-data')
+        form#main(onsubmit='return gSubmitForm(this)', action='/postnewads', method='post', enctype='multipart/form-data')
             input(type='hidden', name='page', value='en_Post a New Ad')
             input(type='hidden', name='ProceedSend', value='1')
             fieldset
@@ -280,10 +280,6 @@ block body
                     li
                         label(for='phone') Your Phone
                         input#phone(name='phone', placeholder='', type='text')
-                    li
-                        label(for='code')
-                            img(src='include/sec_image.php', width='100', height='30')
-                        input#code(name='code', placeholder='Please enter the code', type='text', required='')
             | 	(*) required fields	
             fieldset
                 button(type='submit') Submit
@@ -294,4 +290,3 @@ block body
                 document.getElementById('category').setCustomValidity('Please select a category!');
                 document.getElementById('name').setCustomValidity('Please enter your name!');
                 document.getElementById('email').setCustomValidity('Please enter your email address!');
-                document.getElementById('code').setCustomValidity('Please enter the code');
