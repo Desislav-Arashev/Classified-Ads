@@ -11,12 +11,9 @@ const attachTo = (app, data) => {
         })
         .get('/postnewads', (req, res) => {
             return res.render('postnewads');
-<<<<<<< HEAD
         })
         .post('/postnewads', upload('./static/pictures/classified'), (req, res) => {
             return controller.create(req, res);
-=======
->>>>>>> parent of 4dad5df... post new ad
         });
     app.use('/', router);
 };

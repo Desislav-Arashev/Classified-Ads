@@ -13,7 +13,6 @@ class LatestsAdsController {
                 });
             });
     }
-<<<<<<< HEAD
 
     create(req, res) {
         const bodyAd = req.body;
@@ -28,8 +27,6 @@ class LatestsAdsController {
                 Promise.reject();
             });
     }
-=======
->>>>>>> parent of 4dad5df... post new ad
 }
 
 const init = (data) => {

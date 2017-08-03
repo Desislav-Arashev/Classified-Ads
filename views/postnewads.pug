@@ -11,20 +11,7 @@ block body
             {
             document.getElementById("location").value=selected_location;
             document.getElementById("link_category").value=category_selected_location;
-<<<<<<< HEAD
         form#main(onsubmit='return gSubmitForm(this)', action='postnewads', method='post', enctype='multipart/form-data')
-=======
-            if(images.files.length>allowed_images)
-            {
-            alert("You selected more than  "+allowed_images+" images (which is the maximum allowed for this pricing plan)");
-            return false;
-            }
-            return true;
-            }
-        form#main(onsubmit='return gSubmitForm(this)', action='index.php', method='post', enctype='multipart/form-data')
-            input(type='hidden', name='page', value='en_Post a New Ad')
-            input(type='hidden', name='ProceedSend', value='1')
->>>>>>> parent of 4dad5df... post new ad
             fieldset
                 legend Please enter the ad details
                 ol
