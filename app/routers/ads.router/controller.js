@@ -1,5 +1,6 @@
 class LatestsAdsController {
-    constructor() {
+    constructor(data) {
+        this.data = data;
     }
 
     getAll(req, res) {
