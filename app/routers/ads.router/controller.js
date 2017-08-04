@@ -15,9 +15,49 @@ class LatestsAdsController {
             });
     }
 
+        getAllByCategory(req, res) {
+        const category = req.query.category || 1;
+        const query = { link_category: category };
+        const page = parseInt(req.query.page, 10) || 1;
+        const pagesize = parseInt(req.query.size, 10) || 2;
+        const orderBy = { date: -1 };
+        const queries = {
+            orderBy,
+            query,
+            pagesize,
+            page,
+        };
+
+        return Promise.all([this.data.ads.getAllByQuery(queries),
+        this.data.ads.getAllCount({ link_category: category })]
+    )
+            .then(([ads, adsCount]) => {
+                const pages = Math.ceil(adsCount / pagesize);
+                const searchQuery = {
+                    category: category,
+                    orderBy: 'date',
+                };
+
+                return res.status(200).render('all', {
+                    ads: ads,
+                    searchQuery: searchQuery,
+                    page: page,
+                    pages: pages,
+                });
+            });
+    }
+
         homeGetAll(req, res) {
         this.data.ads.last(5)
             .then((ads) => {
+                ads.forEach(function(ad) {
+                    if (ad.title.length > 50) {
+                        ad.title = ad.title.slice(0, 50);
+                    }
+                    if (ad.description.length > 400) {
+                        ad.description = ad.description.slice(0, 400);
+                    }
+                }, this);
                 const active = ads[0];
                 ads.splice(ads, 1);
                 const inactive = ads;

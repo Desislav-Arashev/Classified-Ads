@@ -15,15 +15,15 @@ block body
                             | Category(*)
                         .div_field
                             select#link_category_menu(name='link_category_menu', required='')
-                                option(value='Buy or Sell') Buy or Sell
-                                option(value='Courses and Classes') Courses and Classes
-                                option(value='Cars') Cars
-                                option(value='Properties') Properties
-                                option(value='Services') Services
-                                option(value='Jobs') Jobs
-                                option(value='Community') Community
-                                option(value='Events') Events
-                                option(value='Business Opportunities') Business Opportunities
+                                option(value='1') Buy or Sell
+                                option(value='2') Courses and Classes
+                                option(value='3') Cars
+                                option(value='4') Properties
+                                option(value='5') Services
+                                option(value='6') Jobs
+                                option(value='7') Community
+                                option(value='8') Events
+                                option(value='9') Business Opportunities
 
                             script(type='text/javascript', src='/static/include/multi_category_select.js')
                             input#link_category(type='hidden', name='link_category', value='')
@@ -159,7 +159,7 @@ block body
                 legend Images
                 ol
                     li
-                        input.form-control.input-sm(type='file', name='avatar', accept='.jpg,.jpeg,.png')
+                        input.form-control.input-sm(type='file', name='avatar', accept='.jpg,.jpeg,.png', required='')
                         span.sub-text
             | 	(*) required fields	
             fieldset

@@ -15,14 +15,33 @@ class BaseMongoDbData {
     }
 
     getAllCount(props) {
-        try {
-            return this.collection
-                .find(props.query)
-                .count();
-        } catch (err) {
-            return Promise.reject('Invalid id');
+            try {
+                return this.collection
+                    .find(props)
+                    .count();
+            } catch (err) {
+                return Promise.reject('Invalid id');
+            }
         }
-    }
+
+    getAllByQuery(queries) {
+            try {
+                return this.collection
+                    .find(queries.query)
+                    .sort(queries.orderBy)
+                    .skip(queries.pagesize * (queries.page - 1))
+                    .limit(queries.pagesize)
+                    .toArray()
+                    .then((items) => {
+                        return items.map((item) => {
+                            item.id = item._id;
+                            return item;
+                        });
+                    });
+            } catch (err) {
+                return Promise.reject('Invalid queryes');
+            }
+        }
 
     last(limit) {
         try {

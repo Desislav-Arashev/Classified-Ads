@@ -58,11 +58,15 @@ block body
         .clear
         br
         .tabbable
+
             ul.nav.nav-tabs
                 li.active
                     a(style='padding-right:20px', href='#tab-details', data-toggle='tab') Details
                 li
                     a(style='padding-right:20px', href='#tab-share', data-toggle='tab') Share
+                if ad.address && ad.latitude && ad.longitude
+                    li
+                         a(style='padding-right:20px', href='#tab-contact', data-toggle='tab') Contact
             .tab-content
                 br
                 #tab-details.tab-pane.active
@@ -76,18 +80,16 @@ block body
                         b Posted by:
                         br
                         |                   #{ad.user.name}
-                        |                   (Individual),
+                        |                   (#{ad.user.user_type}),
                         img(src='images/phone_icon.png', alt='phone icon')
-                        b +4290435345
+                        if ad.user.phone && ad.user.phone > 0
+                            b #{ad.user.phone}
                         br
                     .clear
                     hr.margin-10
                     | 				Posted on:
                     b
-                        | 04/26/13
-                    | , 
-                    | 				Total Visits: 
-                    b 517
+                        | #{ad.date}
                 // end tab-details
                 #tab-images.tab-pane
                     link(rel='stylesheet', href='css/prettyPhoto.css', type='text/css', media='screen', charset='utf-8')
@@ -106,10 +108,9 @@ block body
                     br
                     br
                     | 				Location: 
-                    b Nevada
+                    b #{ad.address}
                     br
-                    // Google Maps
-                    // end Google Maps
+                    img(src='https://maps.googleapis.com/maps/api/staticmap?center='+ad.latitude+','+ad.longitude+'&markers=color:red%7C'+ad.latitude+','+ad.longitude+'&zoom=15&size=800x400&key=AIzaSyAUEyyA9gmlFmNHzLDhagVdO1cTtCvp5DE')
                     br
                     br
                 // end tab-contact

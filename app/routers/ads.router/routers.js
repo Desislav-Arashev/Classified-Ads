@@ -15,7 +15,11 @@ const attachTo = (app, data) => {
         .get('/ad/:id', (req, res) => {
             return controller.getDetails(req, res);
         })
-        .post('/postnewads', upload('./static/pictures/classified'), (req, res) => {
+        .get('/all', (req, res) => {
+            return controller.getAllByCategory(req, res);
+        })
+        .post('/postnewads', upload('./static/pictures/classified'),
+            (req, res) => {
             return controller.create(req, res);
         });
     app.use('/', router);

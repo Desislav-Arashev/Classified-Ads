@@ -68,20 +68,20 @@ block body
                     li
                         label(for='user_type') I am
                         select#user_type(name='user_type')
-                            option(value='1') Individual
-                            option(value='2') Business
+                            option(value='Individual') Individual
+                            option(value='Business') Business
                     li
                         label(for='name')
                             | Your Name(*):
                         input(type='text', name='name', value='', required='', size='30')
                     li
-                        label(for='user_email')
+                        label(for='email')
                             | Email(*):
-                        input(type='email', name='user_email', value='', required='', size='30')
+                        input(type='email', name='email', value='', required='', size='30')
                     li
-                        label(for='user_phone')
+                        label(for='phone', required='')
                             | Phone:
-                        input(type='text', name='user_phone', value='', size='30')
+                        input(type='text', name='phone', value='', size='30')
                     //
                         <input type="checkbox" name="newsletter"  value="1">
                         I would like to subscribe to the	www.phpclassifiedads.com	newsletter

@@ -1,0 +1,38 @@
+extends _shared/_nav
+
+block body
+    .container.text-left
+        hr
+        for ad in ads
+            br
+            .featured_listing
+                .result-image
+                    img(src='static/pictures/classified/' + ad.avatar , width='100', alt='')
+                .result-text
+                    a(href='ad/' + ad.id)
+                        span.featured_listing_title #{ad.title}
+                    .listing_description
+                        | #{ad.description}
+                    .clear
+                    span.listing_posted_date Posted on #{ad.date}
+                .clear
+        ul.pagination
+            if page===1
+                li.page-item.disabled
+                    a.page-link(href='#', tabindex='-1') Previous
+            else
+                li.page-item
+                    a.page-link(href=`/all?category=${searchQuery.category}&page=${page-1}`) Previous                        
+            - for(let i = 1; i <= pages; i+=1 )
+                if(page===i)
+                    li.page-item.active
+                        a.pagination-link(href=`/all?category=${searchQuery.category}&page=${page}`)=page
+                else
+                    li.page-item
+                        a.pagination-link(href=`/all?category=${searchQuery.category}&page=${i}`)=i
+            if page===pages
+                li.page-item.disabled
+                     a.page-link(href='#', tabindex='-1') Next
+            else
+                li.page-item
+                    a.page-link(href=`/all?category=${searchQuery.category}&page=${page+1}`) Next

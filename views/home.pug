@@ -4,26 +4,32 @@ block body
   .container.text-left
         #myCarousel.carousel.slide
             ol.carousel-indicators
-                li.active(data-target='#myCarousel', data-slide-to='0')
-                    img.img-shadow.indicator-image(src='static/pictures/classified/' + active.avatar)
-                li(data-target='#myCarousel', data-slide-to='1')
-                    img.img-shadow.indicator-image(src='static/pictures/classified/' + ads[0].avatar)
-                li(data-target='#myCarousel', data-slide-to='2')
-                    img.img-shadow.indicator-image(src='static/pictures/classified/' + ads[1].avatar)
-                li(data-target='#myCarousel', data-slide-to='3')
-                    img.img-shadow.indicator-image(src='static/pictures/classified/' + ads[2].avatar)
-                li(data-target='#myCarousel', data-slide-to='4')
-                    img.img-shadow.indicator-image(src='static/pictures/classified/' + ads[3].avatar)
+                if active
+                    li.active(data-target='#myCarousel', data-slide-to='0')
+                        img.img-shadow.indicator-image(src='static/pictures/classified/' + active.avatar)
+                if ads && ads[0]
+                    li(data-target='#myCarousel', data-slide-to='1')
+                        img.img-shadow.indicator-image(src='static/pictures/classified/' + ads[0].avatar)
+                if ads && ads[1]
+                    li(data-target='#myCarousel', data-slide-to='2')
+                        img.img-shadow.indicator-image(src='static/pictures/classified/' + ads[1].avatar)
+                if ads && ads[2]
+                    li(data-target='#myCarousel', data-slide-to='3')
+                        img.img-shadow.indicator-image(src='static/pictures/classified/' + ads[2].avatar)
+                if ads && ads[3]
+                    li(data-target='#myCarousel', data-slide-to='4')
+                        img.img-shadow.indicator-image(src='static/pictures/classified/' + ads[3].avatar)
             .carousel-inner
                 .item.active.slide-back
                     .container
                         .carousel-caption
-                            a.carousel-link(href='ad/' + active.id)
-                                img.img-shadow(src='static/pictures/classified/' + active.avatar , height='200', alt='slider', align='right')
-                                h1 #{active.title}
-                                p
-                                    | #{active.description}
-                            br
+                            if active
+                                a.carousel-link(href='ad/' + active.id)
+                                    img.img-shadow(src='static/pictures/classified/' + active.avatar , height='200', alt='slider', align='right')
+                                    h1 #{active.title}
+                                    p
+                                        | #{active.description}
+                                br
                 for ad in ads
                     .item.slide-back
                         .container
@@ -43,25 +49,25 @@ block body
         br
         .clear
         .home-category(style='width:28.33%')
-            a.category_link(href='index.php?mod=search&category=1&lang=en', title='Buy or Sell') Buy or Sell (3)
+            a.category_link(href='all?category=1&page=1', title='Buy or Sell') Buy or Sell
             
         .home-category(style='width:28.33%')
-            a.category_link(href='index.php?mod=search&category=2&lang=en', title='Courses & Classes') Courses & Classes (0)
+            a.category_link(href='all?category=2&page=1', title='Courses & Classes') Courses and Classes
         .home-category(style='width:28.33%')
-            a.category_link(href='index.php?mod=search&category=3&lang=en', title='Cars') Cars (0)
+            a.category_link(href='all?category=3&page=1', title='Cars') Cars
         .clear
         .home-category(style='width:28.33%')
-            a.category_link(href='index.php?mod=search&category=4&lang=en', title='Properties') Properties (4)
+            a.category_link(href='all?category=4&page=1', title='Properties') Properties
         .home-category(style='width:28.33%')
-            a.category_link(href='index.php?mod=search&category=5&lang=en', title='Services') Services (0)
+            a.category_link(href='all?category=5&page=1', title='Services') Services
         .home-category(style='width:28.33%')
-            a.category_link(href='index.php?mod=search&category=6&lang=en', title='Jobs') Jobs (0)
+            a.category_link(href='all?category=6&page=1', title='Jobs') Jobs
         .clear
         .home-category(style='width:28.33%')
-            a.category_link(href='index.php?mod=search&category=7&lang=en', title='Community') Community (0)
+            a.category_link(href='all?category=7&page=1', title='Community') Community
         .home-category(style='width:28.33%')
-            a.category_link(href='index.php?mod=search&category=8&lang=en', title='Events') Events (0)
+            a.category_link(href='all?category=8&page=1', title='Events') Events
         .home-category(style='width:28.33%')
-            a.category_link(href='index.php?mod=search&category=9&lang=en', title='Business Opportunities') Business Opportunities (0)
+            a.category_link(href='all?category=9&page=1', title='Business Opportunities') Business Opportunities
         .clear
         br
