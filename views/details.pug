@@ -66,7 +66,7 @@ block body
                     a(style='padding-right:20px', href='#tab-share', data-toggle='tab') Share
                 if ad.address && ad.latitude && ad.longitude
                     li
-                         a(style='padding-right:20px', href='#tab-contact', data-toggle='tab') Contact
+                         a(style='padding-right:20px', href='#tab-contact', data-toggle='tab') Adress
             .tab-content
                 br
                 #tab-details.tab-pane.active
@@ -78,9 +78,12 @@ block body
                         br
                         br
                         b Posted by:
-                        br
                         |                   #{ad.user.name}
                         |                   (#{ad.user.user_type}),
+                        br
+                        if ad.price
+                            b Price:
+                            |   #{ad.price} $
                         img(src='images/phone_icon.png', alt='phone icon')
                         if ad.user.phone && ad.user.phone > 0
                             b #{ad.user.phone}

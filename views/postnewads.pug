@@ -26,10 +26,8 @@ block body
                                 option(value='9') Business Opportunities
 
                             script(type='text/javascript', src='/static/include/multi_category_select.js')
-                            input#link_category(type='hidden', name='link_category', value='')
+                            input#link_category(type='hidden', name='link_category', value='', required='')
                             script(type='text/javascript').
-                                var m_all="Please Select";
-                                category_transform_select("link_category_menu","240px","220px");
                         .clear
                         .clear
                     li
@@ -43,74 +41,10 @@ block body
                         br
                         span.sub-text(style='position:relative;left:120px') 800 characters maximum
                     li
-                        label(for='price') Price
+                        label(for='price') Price ($)
                         input#price(name='price', type='text')
                 ol#additional-fields
-                    li
-                        .div_label
-                            | Location					
-                            br
-                            a(href='javascript:AddMap()') Add Map
-                        .div_field
-                            select#location_menu(name='location_menu')
-                                option(value='Alabama')  Alabama
-                                option(value='Alaska')  Alaska
-                                option(value='Arizona')  Arizona
-                                option(value='Arkansas')  Arkansas
-                                option(value='California')  California
-                                option(value='Colorado')  Colorado
-                                option(value='Connecticut')  Connecticut
-                                option(value='Delaware')  Delaware
-                                option(value='District of Columbia')  District of Columbia
-                                option(value='Florida') Florida
-                                option(value='Georgia') Georgia
-                                option(value='Hawaii') Hawaii
-                                option(value='Idaho') Idaho
-                                option(value='Illinois') Illinois
-                                option(value='Indiana') Indiana
-                                option(value='Iowa') Iowa
-                                option(value='Kansas') Kansas
-                                option(value='Kentucky') Kentucky
-                                option(value='Louisiana') Louisiana
-                                option(value='Maine') Maine
-                                option(value='Maryland') Maryland
-                                option(value='Massachusetts') Massachusetts
-                                option(value='Michigan') Michigan
-                                option(value='Minnesota') Minnesota
-                                option(value='Mississippi') Mississippi
-                                option(value='Missouri') Missouri
-                                option(value='Montana') Montana
-                                option(value='Nebraska') Nebraska
-                                option(value='Nevada') Nevada
-                                option(value='New Hampshire') New Hampshire
-                                option(value='New Jersey') New Jersey
-                                option(value='New Mexico') New Mexico
-                                option(value='New York') New York
-                                option(value='North Carolina') North Carolina
-                                option(value='North Dakota') North Dakota
-                                option(value='Ohio') Ohio
-                                option(value='Oklahoma') Oklahoma
-                                option(value='Oregon') Oregon
-                                option(value='Pennsylvania') Pennsylvania
-                                option(value='Rhode Island') Rhode Island
-                                option(value='South Carolina') South Carolina
-                                option(value='South Dakota') South Dakota
-                                option(value='Tennessee') Tennessee
-                                option(value='Texas') Texas
-                                option(value='Utah') Utah
-                                option(value='Vermont') Vermont
-                                option(value='Virginia') Virginia
-                                option(value='Washington') Washington
-                                option(value='West Virginia') West Virginia
-                                option(value='Wisconsin') Wisconsin
-                                option(value='Wyoming') Wyoming
-                            script(type='text/javascript', src='/static/js/map.js')
-                            script(type='text/javascript', src='/static/include/multi_location_select.js')
-                            input#location(type='hidden', name='location', value='')
-                            script(type='text/javascript').
-                                transform_select("location_menu","200px","200px");
-                        .clear
-                    li#add-map(style='display:none')
+                    li#add-map()
                         .div_label
                             | Address
                         script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDfC5X1qhmU-V6X5WUhfCyF7-UIWgZO4m4&sensor=false&libraries=places,drawing')
@@ -155,6 +89,11 @@ block body
                                 | Sample package description comes here
                             br
                             br
+                            script(type='text/javascript', src='/static/js/map.js')
+                            script(type='text/javascript', src='/static/include/multi_location_select.js')
+                            input#location(type='hidden', name='location', value='')
+                            script(type='text/javascript').
+                                transform_select("location_menu","200px","200px");
             fieldset#images_fieldset
                 legend Images
                 ol
